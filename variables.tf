@@ -27,3 +27,13 @@ variable "hosted_zone_id" {
   description = "The Route 53 Hosted Zone ID for the domain"
   default     = "Z1234567890ABCDEFG" # Change to your hosted zone ID
 }
+
+variable "db_password" {
+  description = "Database master password; inject through TF_VAR_db_password, never commit it."
+  type        = string
+  sensitive   = true
+  validation {
+    condition     = length(var.db_password) >= 16
+    error_message = "Use a database password of at least 16 characters."
+  }
+}
