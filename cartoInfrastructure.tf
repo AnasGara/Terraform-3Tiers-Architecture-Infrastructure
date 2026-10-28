@@ -357,7 +357,7 @@ resource "aws_db_instance" "main" {
   instance_class          = "db.t2.micro"
   name                    = "mydatabase"
   username                = "postgre"
-  password                = "root"
+  password                = var.db_password
   vpc_security_group_ids  = [aws_security_group.rds_sg.id]
   db_subnet_group_name    = aws_db_subnet_group.main.name
   multi_az                = true
